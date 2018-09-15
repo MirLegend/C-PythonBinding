@@ -20,12 +20,6 @@ class Monster(KBEngine.Unit):
 	#def setViewRadius(self, type):
 	#	return 100
 
-#def hello():
-#	print ("hello my python world!")
-#	print ("KBEngine com is %s!" % (KBEngine.component))
-
-#hello()
-
 def onAppInit(isBootstrap, str):
 	"""
 	KBEngine method.
@@ -35,4 +29,3 @@ def onAppInit(isBootstrap, str):
 	"""
 	print('onBaseAppReady: isBootstrap=%s, str=%s' % \
 	 (isBootstrap, str))
-	#monster2 = Monster(2)
