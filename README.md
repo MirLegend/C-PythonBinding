@@ -18,15 +18,15 @@
 	  在python中生成对象跟其他普通python对象没什么区别，只是要实现PyTypeObject的tp_alloc。
        在C++中生产一个python对象 有两个关键步骤：
 	   
-	   1.  `PyObject * pObject = PyType_GenericAlloc((PyTypeObject*)pyClass, 0);`  
-	   2.  `Unit* pUnit = new (pObject) Unit(id);`
+	   1.  PyObject * pObject = PyType_GenericAlloc((PyTypeObject*)pyClass, 0);
+	   2.  Unit* pUnit = new (pObject) Unit(id);
 	   
       PyType_GenericAlloc使用python接口创建一个python对象内存空间，并且refcnt=1，
 	  大小什么的在PyTypeObject里面描述了，因为python是C语言实现，所以C++对象构造函数并没有执行，
 	  第二个步骤就是在某个内存中执行C++类的构造函数。
 	  
-	  **(这个思路** **其实在暗黑战神服务器中也有类似步骤**，
-	  **在lua中申请空间**， **在C++中执行构造**，**这样来看其实python**、**lua在大的方向上其实并无二异)**
+**(这个思路** **其实在暗黑战神服务器中也有类似步骤**，
+**在lua中申请空间**， **在C++中执行构造**，**这样来看其实python**、**lua在大的方向上其实并无二异)**
 
 ##### C-PythonBinding 
       C-PythonBinding 仅仅是使用pyscript的一个测试demo 实现自定义一个C++类 Unit，导出到python中，可供python类继承。
