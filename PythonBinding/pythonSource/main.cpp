@@ -14,8 +14,8 @@ PyObject*												entryScript_;
 int main(int argc, char* argv[])
 {
 	printf("hello world! \n");
-	wchar_t* tbuf = KBEngine::strutil::char2wchar("F:/minikbe/PythonBinding/PythonBinding/data/common");
-	std::wstring pyPaths = L"F:/minikbe/PythonBinding/PythonBinding/data/base;";
+	wchar_t* tbuf = KBEngine::strutil::char2wchar("./data/common");
+	std::wstring pyPaths = L"./data/base;";
 	bool ret = getScript().install(tbuf, pyPaths, "KBEngine", BASEAPP_TYPE);
 	free(tbuf);
 	Unit::installScript(getScript().getModule());
@@ -76,12 +76,10 @@ int main(int argc, char* argv[])
 		{
 			PyObject* pBool = PyBool_FromLong(1);
 			PyObject* pyOrder = PyUnicode_FromString("asdgasd");
-			//printf("pBool refcount1:%d, %d \n", pBool->ob_refcnt, pyOrder->ob_refcnt);
 			PyObject* pyResult = PyObject_CallMethod(entryScript_,
 			const_cast<char*>("onAppInit"),
 			const_cast<char*>("OO"),
 			pBool, pyOrder);
-			//printf("pBool refcount2:%d ,%d \n", pBool->ob_refcnt, pyOrder->ob_refcnt);
 			if (pyResult != NULL)
 			Py_DECREF(pyResult);
 			else
@@ -91,7 +89,8 @@ int main(int argc, char* argv[])
 		
 	}
 
-	Py_Finalize();
+	Unit::uninstallScript();
+	getScript().uninstall();
 	char c;
 	scanf("%c", &c);
 }

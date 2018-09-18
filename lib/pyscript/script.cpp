@@ -25,17 +25,6 @@ static PyObject* __py_genUUID64(PyObject *self, void *closure)
 {
 	static int8 check = -1;
 
-	//if(check < 0)
-	//{
-	//	if(g_componentGlobalOrder <= 0 || g_componentGlobalOrder > 65535)
-	//	{
-	//		WARNING_MSG(fmt::format("globalOrder({}) is not in the range of 0~65535, genUUID64 is not safe, "
-	//			"in the multi process may be repeated.\n", g_componentGlobalOrder));
-	//	}
-
-	//	check = 1;
-	//}
-
 	return PyLong_FromUnsignedLongLong(genUUID64());
 }
 
@@ -128,15 +117,12 @@ int Script::run_simpleString(const char* command, std::string* retBufferPtr)
 bool Script::install(const wchar_t* pythonHomeDir, std::wstring pyPaths, 
 	const char* moduleName, COMPONENT_TYPE componentType)
 {
-	std::wstring pySysPaths = L"F:/minikbe/PythonBinding/PythonBinding/data/common;F:/minikbe/PythonBinding/PythonBinding/data/common/lib-dynload;F:/minikbe/PythonBinding/PythonBinding/data/common/common/DLLs;";
-	pySysPaths += L"F:/minikbe/PythonBinding/PythonBinding/data/common/Lib;";
-	pySysPaths += L"F:/minikbe/PythonBinding/PythonBinding/data/common/Lib/site-packages;";
-	pySysPaths += L"F:/minikbe/PythonBinding/PythonBinding/data/common/Lib/dist-packages";// SCRIPT_PATH;
+	std::wstring pySysPaths = L"./data/common;F:/minikbe/PythonBinding/PythonBinding/data/common/lib-dynload;F:/minikbe/PythonBinding/PythonBinding/data/common/common/DLLs;";
+	pySysPaths += L"./data/common/Lib;";
+	pySysPaths += L"./data/common/Lib/site-packages;";
+	pySysPaths += L"./data/common/Lib/dist-packages";// SCRIPT_PATH;
 
-	//wchar_t* pwpySysResPath = strutil::char2wchar(const_cast<char*>(Resmgr::getSingleton().getPySysResPath().c_str()));
-	//strutil::kbe_replace(pySysPaths, L"../../res/", pwpySysResPath);
 	pyPaths += pySysPaths;
-	//free(pwpySysResPath);
 
 	// 先设置python的环境变量
 	Py_SetPythonHome(const_cast<wchar_t*>(pythonHomeDir));								
