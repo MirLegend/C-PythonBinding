@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 	{
 		PyObject* pyClass =
 			PyObject_GetAttrString(entryScript_, const_cast<char *>("Monster"));
-
+		
 		if (pyClass == NULL)
 		{
 			ERROR_MSG(fmt::format("EntityDef::initialize: Could not find ComponentClass[{}]\n",
@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
 		}
 		
 	}
-
+	S_RELEASE(entryScript_);
 	Unit::uninstallScript();
 	getScript().uninstall();
 	char c;
