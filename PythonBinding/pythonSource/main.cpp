@@ -60,9 +60,9 @@ int main(int argc, char* argv[])
 			else
 			{
 				Unit* pUnit = new (pObjectMonster) Unit(9);
-				if (PyObject_HasAttrString(pObjectMonster, "__init__"))
+				if (PyObject_HasAttrString(pUnit, "__init__"))
 				{	
-					PyObject* pyResult = PyObject_CallMethod(pObjectMonster, const_cast<char*>("__init__"),
+					PyObject* pyResult = PyObject_CallMethod(pUnit, const_cast<char*>("__init__"),
 						const_cast<char*>(""));	
 					if (pyResult != NULL)
 						Py_DECREF(pyResult);
