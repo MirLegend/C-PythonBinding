@@ -32,9 +32,9 @@
       C-PythonBinding 仅仅是使用pyscript的一个测试demo 实现自定义一个C++类 Unit，导出到python中，可供python类继承。
       C++实现的Unit类，导出到python中让python模块继承
  
-![python c](https://github.com/MirLegend/C-PythonBinding/blob/master/doc/1.png)
-![python c](https://github.com/MirLegend/C-PythonBinding/blob/master/doc/2.png)
+![python c](https://gitee.com/zcg43951/resource/blob/master/PythonBinding/doc/1.png)
+![python c](https://gitee.com/zcg43951/resource/blob/master/PythonBinding/doc/2.png)
 
       python模块继承C++实现的Unit类
 	  
-![python c object](https://github.com/MirLegend/C-PythonBinding/blob/master/doc/3.png)
+![python c object](https://gitee.com/zcg43951/resource/blob/master/PythonBinding/doc/3.png)
